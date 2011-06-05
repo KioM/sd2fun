@@ -191,9 +191,15 @@ struct MANGOS_DLL_DECL boss_thekalAI : public boss_thekalBaseAI
         m_pInstance->SetData(TYPE_THEKAL, DONE);
 
         // remove the two adds
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_thekal.cpp
         if (Creature* pZath = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_ZATH)))
             pZath->ForcedDespawn();
         if (Creature* pLorkhan = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_LORKHAN)))
+=======
+        if (Creature* pZath = m_pInstance->GetSingleCreatureFromStorage(NPC_ZATH))
+            pZath->ForcedDespawn();
+        if (Creature* pLorkhan = m_pInstance->GetSingleCreatureFromStorage(NPC_LORKHAN))
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_thekal.cpp
             pLorkhan->ForcedDespawn();
     }
 
@@ -211,12 +217,20 @@ struct MANGOS_DLL_DECL boss_thekalAI : public boss_thekalBaseAI
             return false;
 
         // Else Prevent them Resurrecting
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_thekal.cpp
         if (Creature* pLorkhan = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_LORKHAN)))
+=======
+        if (Creature* pLorkhan = m_pInstance->GetSingleCreatureFromStorage(NPC_LORKHAN))
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_thekal.cpp
         {
             if (boss_thekalBaseAI* pFakerAI = dynamic_cast<boss_thekalBaseAI*>(pLorkhan->AI()))
                 pFakerAI->PreventRevive();
         }
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_thekal.cpp
         Creature* pZath = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_ZATH));
+=======
+        if (Creature* pZath = m_pInstance->GetSingleCreatureFromStorage(NPC_ZATH))
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_thekal.cpp
         {
             if (boss_thekalBaseAI* pFakerAI = dynamic_cast<boss_thekalBaseAI*>(pZath->AI()))
                 pFakerAI->PreventRevive();
@@ -455,8 +469,13 @@ struct MANGOS_DLL_DECL mob_zealot_lorkhanAI : public boss_thekalBaseAI
                 {
                     if (m_pInstance)
                     {
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_thekal.cpp
                         Creature* pThekal = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_THEKAL));
                         Creature* pZath = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_ZATH));
+=======
+                        Creature* pThekal = m_pInstance->GetSingleCreatureFromStorage(NPC_THEKAL);
+                        Creature* pZath = m_pInstance->GetSingleCreatureFromStorage(NPC_ZATH);
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_thekal.cpp
 
                         switch(urand(0, 1))
                         {

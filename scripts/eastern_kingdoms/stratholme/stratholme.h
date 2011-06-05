@@ -91,6 +91,16 @@ static sEventLocation sStratholmeLocation[] =
     {4042.575f, -3337.929f, 115.059f}                       // ysida move loc
 };
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/stratholme/stratholme.h
+=======
+struct ZigguratStore
+{
+    ObjectGuid m_doorGuid;
+    ObjectGuid m_crystalGuid;
+    GUIDList m_lZigguratAcolyteGuid;
+};
+
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/stratholme/stratholme.h
 struct MANGOS_DLL_DECL instance_stratholme : public ScriptedInstance
 {
     public:
@@ -104,7 +114,10 @@ struct MANGOS_DLL_DECL instance_stratholme : public ScriptedInstance
 
         void SetData(uint32 uiType, uint32 uiData);
         uint32 GetData(uint32 uiType);
+<<<<<<< HEAD:scripts/eastern_kingdoms/stratholme/stratholme.h
         uint64 GetData64(uint32 uiData);
+=======
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/stratholme/stratholme.h
 
         const char* Save() { return strInstData.c_str(); }
         void Load(const char* chrIn);
@@ -115,10 +128,18 @@ struct MANGOS_DLL_DECL instance_stratholme : public ScriptedInstance
 
         void Update(uint32 uiDiff);
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/stratholme/stratholme.h
         bool StartSlaugtherSquare();
         void DoSortZiggurats();
 
     protected:
+=======
+    protected:
+        bool StartSlaugtherSquare();
+        void DoSortZiggurats();
+        void ThazudinAcolyteJustDied( Creature* pCreature );
+
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/stratholme/stratholme.h
         uint32 m_auiEncounter[MAX_ENCOUNTER];
         bool m_bIsSilverHandDead[MAX_SILVERHAND];
         std::string strInstData;
@@ -131,6 +152,7 @@ struct MANGOS_DLL_DECL instance_stratholme : public ScriptedInstance
         uint32 m_uiYellCounter;
         uint32 m_uiMindlessCount;
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/stratholme/stratholme.h
         uint64 m_uiServiceEntranceGUID;
         uint64 m_uiGauntletGate1GUID;
         uint64 m_auiZigguratGUID[MAX_ZIGGURATS];
@@ -147,11 +169,17 @@ struct MANGOS_DLL_DECL instance_stratholme : public ScriptedInstance
         uint64 m_uiBarthilasGUID;
         uint64 m_uiAcolyteAnnouncerGUID;
         uint64 m_auiCrystalSortedGUID[MAX_ZIGGURATS];
+=======
+        ZigguratStore m_zigguratStorage[MAX_ZIGGURATS];
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/stratholme/stratholme.h
 
         GUIDList m_luiCrystalGUIDs;
         GUIDSet m_sAbomnationGUID;
         GUIDList m_luiAcolyteGUIDs;
+<<<<<<< HEAD:scripts/eastern_kingdoms/stratholme/stratholme.h
         GUIDList m_alZigguratAcolyteGUID[MAX_ZIGGURATS];
+=======
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/stratholme/stratholme.h
         GUIDList m_luiUndeadGUIDs;
         GUIDList m_luiGuardGUIDs;
 };

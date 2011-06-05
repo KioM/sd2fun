@@ -47,7 +47,10 @@ class MANGOS_DLL_DECL instance_zulgurub : public ScriptedInstance
 
         void SetData(uint32 uiType, uint32 uiData);
         uint32 GetData(uint32 uiType);
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/zulgurub.h
         uint64 GetData64(uint32 uiData);
+=======
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/zulgurub.h
 
         const char* Save() { return m_strInstData.c_str(); }
         void Load(const char* chrIn);
@@ -60,12 +63,15 @@ class MANGOS_DLL_DECL instance_zulgurub : public ScriptedInstance
         uint32 m_auiEncounter[MAX_ENCOUNTER];
         std::string m_strInstData;
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/zulgurub.h
         uint64 m_uiLorKhanGUID;
         uint64 m_uiZathGUID;
         uint64 m_uiThekalGUID;
         uint64 m_uiJindoGUID;
         uint64 m_uiHakkarGUID;
 
+=======
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/zulgurub.h
         bool m_bHasIntroYelled;
         bool m_bHasAltarYelled;
 };

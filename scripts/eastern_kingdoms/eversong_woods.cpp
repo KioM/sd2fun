@@ -352,22 +352,38 @@ enum
 
 struct MANGOS_DLL_DECL npc_apprentice_mirvedaAI : public ScriptedAI
 {
+<<<<<<< HEAD:scripts/eastern_kingdoms/eversong_woods.cpp
     npc_apprentice_mirvedaAI(Creature* pCreature) : ScriptedAI(pCreature) {Reset();}
 
     uint8 m_uiMobCount;
     uint32 m_uiFireballTimer;
     uint64 m_uiPlayerGUID;
+=======
+    npc_apprentice_mirvedaAI(Creature* pCreature) : ScriptedAI(pCreature) { Reset(); }
+
+    uint8 m_uiMobCount;
+    uint32 m_uiFireballTimer;
+    ObjectGuid m_playerGuid;
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/eversong_woods.cpp
 
     void Reset()
     {
         m_uiMobCount      = 0;
+<<<<<<< HEAD:scripts/eastern_kingdoms/eversong_woods.cpp
         m_uiPlayerGUID    = 0;
+=======
+        m_playerGuid.Clear();
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/eversong_woods.cpp
         m_uiFireballTimer = 0;
     }
 
     void JustDied(Unit* pKiller)
     {
+<<<<<<< HEAD:scripts/eastern_kingdoms/eversong_woods.cpp
         Player* pPlayer = m_creature->GetMap()->GetPlayer(m_uiPlayerGUID);
+=======
+        Player* pPlayer = m_creature->GetMap()->GetPlayer(m_playerGuid);
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/eversong_woods.cpp
 
         if (pPlayer && pPlayer->GetQuestStatus(QUEST_UNEXPECTED_RESULT) == QUEST_STATUS_INCOMPLETE)
             pPlayer->SendQuestFailed(QUEST_UNEXPECTED_RESULT);
@@ -386,11 +402,16 @@ struct MANGOS_DLL_DECL npc_apprentice_mirvedaAI : public ScriptedAI
         if (m_uiMobCount)
             return;
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/eversong_woods.cpp
         Player* pPlayer = m_creature->GetMap()->GetPlayer(m_uiPlayerGUID);
+=======
+        Player* pPlayer = m_creature->GetMap()->GetPlayer(m_playerGuid);
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/eversong_woods.cpp
 
         if (pPlayer && pPlayer->GetQuestStatus(QUEST_UNEXPECTED_RESULT) == QUEST_STATUS_INCOMPLETE)
             pPlayer->GroupEventHappens(QUEST_UNEXPECTED_RESULT, m_creature);
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/eversong_woods.cpp
         m_uiPlayerGUID = 0;
         m_creature->SetFlag(UNIT_NPC_FLAGS, UNIT_NPC_FLAG_QUESTGIVER);
     }
@@ -399,6 +420,16 @@ struct MANGOS_DLL_DECL npc_apprentice_mirvedaAI : public ScriptedAI
     {
         m_creature->RemoveFlag(UNIT_NPC_FLAGS, UNIT_NPC_FLAG_QUESTGIVER);
         m_uiPlayerGUID = uiPlayerGUID;
+=======
+        m_playerGuid.Clear();
+        m_creature->SetFlag(UNIT_NPC_FLAGS, UNIT_NPC_FLAG_QUESTGIVER);
+    }
+
+    void StartEvent(Player* pPlayer)
+    {
+        m_creature->RemoveFlag(UNIT_NPC_FLAGS, UNIT_NPC_FLAG_QUESTGIVER);
+        m_playerGuid = pPlayer->GetObjectGuid();
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/eversong_woods.cpp
 
         m_creature->SummonCreature(NPC_GHARSUL,    8745.0f, -7134.32f, 35.22f, 0.0f, TEMPSUMMON_CORPSE_DESPAWN, 4000);
         m_creature->SummonCreature(NPC_ANGERSHADE, 8745.0f, -7134.32f, 35.22f, 0.0f, TEMPSUMMON_CORPSE_DESPAWN, 4000);
@@ -427,7 +458,11 @@ bool QuestAccept_unexpected_results(Player* pPlayer, Creature* pCreature, const 
 {
     if (pQuest->GetQuestId() == QUEST_UNEXPECTED_RESULT)
         if (npc_apprentice_mirvedaAI* pMirvedaAI = dynamic_cast<npc_apprentice_mirvedaAI*>(pCreature->AI()))
+<<<<<<< HEAD:scripts/eastern_kingdoms/eversong_woods.cpp
             pMirvedaAI->StartEvent(pPlayer->GetGUID());
+=======
+            pMirvedaAI->StartEvent(pPlayer);
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/eversong_woods.cpp
     return true;
 }
 

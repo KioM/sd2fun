@@ -44,11 +44,19 @@ enum InstanceZA
     TYPE_J_EGGS_LEFT        = 12,
 
     NPC_AKILZON             = 23574,
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/zulaman.h
     NPC_NALORAKK            = 23576,
     NPC_JANALAI             = 23578,
     NPC_HALAZZI             = 23577,
     NPC_MALACRASS           = 24239,
     NPC_ZULJIN              = 23863,
+=======
+    // NPC_NALORAKK         = 23576,
+    // NPC_JANALAI          = 23578,
+    NPC_HALAZZI             = 23577,
+    NPC_MALACRASS           = 24239,
+    // NPC_ZULJIN           = 23863,
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/zulaman.h
 
     NPC_EGG                 = 23817,
     NPC_SPIRIT_LYNX         = 24143,
@@ -119,7 +127,10 @@ class MANGOS_DLL_DECL instance_zulaman : public ScriptedInstance
 
         void SetData(uint32 uiType, uint32 uiData);
         uint32 GetData(uint32 uiType);
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/zulaman.h
         uint64 GetData64(uint32 uiData);
+=======
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/zulaman.h
 
         const char* Save() { return m_strInstData.c_str(); }
         void Load(const char* chrIn);
@@ -139,6 +150,7 @@ class MANGOS_DLL_DECL instance_zulaman : public ScriptedInstance
         uint32 m_uiEventTimer;
         uint32 m_uiGongCount;
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/zulaman.h
         uint64 m_uiAkilzonGUID;
         uint64 m_uiNalorakkGUID;
         uint64 m_uiJanalaiGUID;
@@ -157,6 +169,8 @@ class MANGOS_DLL_DECL instance_zulaman : public ScriptedInstance
         uint64 m_uiWoodenDoorGUID;
         uint64 m_uiFireDoorGUID;
 
+=======
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/zulaman.h
         GUIDList m_lEggsGUIDList;
         uint32 m_uiEggsRemainingCount_Left;
         uint32 m_uiEggsRemainingCount_Right;

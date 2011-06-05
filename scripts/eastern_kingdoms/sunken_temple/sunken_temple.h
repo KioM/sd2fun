@@ -146,6 +146,7 @@ class MANGOS_DLL_DECL instance_sunken_temple : public ScriptedInstance
         bool m_bIsFirstHakkarWave;
         bool m_bCanSummonBloodkeeper;
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/sunken_temple.h
         uint64 m_uiAtalarionGUID;
         uint64 m_uiJammalanGUID;
         uint64 m_uiShadeGUID;
@@ -154,6 +155,8 @@ class MANGOS_DLL_DECL instance_sunken_temple : public ScriptedInstance
         uint64 m_uiAvatarDoor1GUID;
         uint64 m_uiAvatarDoor2GUID;
 
+=======
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/sunken_temple.h
         GUIDList m_luiFlameGUIDs;
         GUIDList m_luiBigLightGUIDs;
         GUIDVector m_vuiCircleGUIDs;

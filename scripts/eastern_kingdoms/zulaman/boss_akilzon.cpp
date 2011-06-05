@@ -252,7 +252,11 @@ struct MANGOS_DLL_DECL mob_soaring_eagleAI : public ScriptedAI
         if (!m_pInstance)
             return;
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_akilzon.cpp
         if (Creature* pAzkil = m_pInstance->instance->GetCreature(m_pInstance->GetData64(NPC_AKILZON)))
+=======
+        if (Creature* pAzkil = m_pInstance->GetSingleCreatureFromStorage(NPC_AKILZON))
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_akilzon.cpp
         {
             float fX, fY, fZ;
             pAzkil->GetRandomPoint(pAzkil->GetPositionX(), pAzkil->GetPositionY(), pAzkil->GetPositionZ()+15.0f, 30.0f, fX, fY, fZ);

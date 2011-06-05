@@ -91,7 +91,10 @@ struct MANGOS_DLL_DECL boss_mandokirAI : public ScriptedAI
     boss_mandokirAI(Creature* pCreature) : ScriptedAI(pCreature)
     {
         m_pInstance = (ScriptedInstance*)pCreature->GetInstanceData();
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
         m_uiOhganGUID = 0;
+=======
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
         Reset();
     }
 
@@ -110,8 +113,13 @@ struct MANGOS_DLL_DECL boss_mandokirAI : public ScriptedAI
     bool m_bMandokirDownstairs;
 
     float m_fTargetThreat;
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
     uint64 m_uiWatchTarget;
     uint64 m_uiOhganGUID;
+=======
+    ObjectGuid m_watchTargetGuid;
+    ObjectGuid m_ohganGuid;
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
 
     void Reset()
     {
@@ -128,9 +136,15 @@ struct MANGOS_DLL_DECL boss_mandokirAI : public ScriptedAI
         m_bMandokirDownstairs = false;
 
         m_fTargetThreat = 0.0f;
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
         m_uiWatchTarget = 0;
 
         if (Creature* pOhgan = m_creature->GetMap()->GetCreature(m_uiOhganGUID))
+=======
+        m_watchTargetGuid.Clear();
+
+        if (Creature* pOhgan = m_creature->GetMap()->GetCreature(m_ohganGuid))
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
             pOhgan->ForcedDespawn();
     }
 
@@ -167,7 +181,11 @@ struct MANGOS_DLL_DECL boss_mandokirAI : public ScriptedAI
 
                 if (m_pInstance)
                 {
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
                     if (Creature* pJindo = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_JINDO)))
+=======
+                    if (Creature* pJindo = m_pInstance->GetSingleCreatureFromStorage(NPC_JINDO))
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
                     {
                         if (pJindo->isAlive())
                             DoScriptText(SAY_GRATS_JINDO, pJindo);
@@ -207,7 +225,11 @@ struct MANGOS_DLL_DECL boss_mandokirAI : public ScriptedAI
     {
         if (pSummoned->GetEntry() == NPC_OHGAN)
         {
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
             m_uiOhganGUID = pSummoned->GetGUID();
+=======
+            m_ohganGuid = pSummoned->GetObjectGuid();
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
 
             if (m_creature->getVictim())
                 pSummoned->AI()->AttackStart(m_creature->getVictim());
@@ -217,7 +239,11 @@ struct MANGOS_DLL_DECL boss_mandokirAI : public ScriptedAI
     void SummonedCreatureDespawn(Creature* pSummoned)
     {
         if (pSummoned->GetEntry() == NPC_OHGAN)
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
             m_uiOhganGUID = 0;
+=======
+            m_ohganGuid.Clear();
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
     }
 
     void SpellHitTarget(Unit* pTarget, const SpellEntry* pSpell)
@@ -227,7 +253,11 @@ struct MANGOS_DLL_DECL boss_mandokirAI : public ScriptedAI
             DoScriptText(SAY_WATCH, m_creature, pTarget);
             DoScriptText(SAY_WATCH_WHISPER, m_creature, pTarget);
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
             m_uiWatchTarget = pTarget->GetGUID();
+=======
+            m_watchTargetGuid = pTarget->GetObjectGuid();
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
             m_fTargetThreat = m_creature->getThreatManager().getThreat(pTarget);
             m_uiWatch_Timer = 6000;
 
@@ -267,9 +297,15 @@ struct MANGOS_DLL_DECL boss_mandokirAI : public ScriptedAI
         if (m_uiWatch_Timer < uiDiff)
         {
             //If someone is watched
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
             if (m_uiWatchTarget)
             {
                 Player* pWatchTarget = m_creature->GetMap()->GetPlayer(m_uiWatchTarget);
+=======
+            if (m_watchTargetGuid)
+            {
+                Player* pWatchTarget = m_creature->GetMap()->GetPlayer(m_watchTargetGuid);
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
 
                  //If threat is higher that previously saved, mandokir will act
                 if (pWatchTarget && pWatchTarget->isAlive() && m_creature->getThreatManager().getThreat(pWatchTarget) > m_fTargetThreat)
@@ -280,7 +316,11 @@ struct MANGOS_DLL_DECL boss_mandokirAI : public ScriptedAI
                     DoCastSpellIfCan(pWatchTarget, SPELL_CHARGE);
                 }
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
                 m_uiWatchTarget = 0;
+=======
+                m_watchTargetGuid.Clear();
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
             }
             else
             {
@@ -296,7 +336,11 @@ struct MANGOS_DLL_DECL boss_mandokirAI : public ScriptedAI
         else
             m_uiWatch_Timer -= uiDiff;
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
         if (!m_uiWatchTarget)
+=======
+        if (!m_watchTargetGuid)
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_mandokir.cpp
         {
             //Cleave
             if (m_uiCleave_Timer < uiDiff)

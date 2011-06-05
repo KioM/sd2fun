@@ -143,7 +143,11 @@ struct MANGOS_DLL_DECL npc_harrison_jones_zaAI : public npc_escortAI
             case 1:
                 DoScriptText(SAY_AT_GONG, m_creature);
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/zulaman.cpp
                 if (GameObject* pEntranceDoor = m_pInstance->instance->GetGameObject(m_pInstance->GetData64(GO_STRANGE_GONG)))
+=======
+                if (GameObject* pEntranceDoor = m_pInstance->GetSingleGameObjectFromStorage(GO_STRANGE_GONG))
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/zulaman.cpp
                     pEntranceDoor->RemoveFlag(GAMEOBJECT_FLAGS, GO_FLAG_NO_INTERACT);
 
                 //Start bang gong for 2min
@@ -223,7 +227,11 @@ bool GOUse_go_strange_gong(Player* pPlayer, GameObject* pGo)
 
     if (pInstance->GetData(TYPE_EVENT_RUN) == SPECIAL)
     {
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/zulaman.cpp
         if (Creature* pCreature = pGo->GetMap()->GetCreature(pInstance->GetData64(NPC_HARRISON)))
+=======
+        if (Creature* pCreature = pInstance->GetSingleCreatureFromStorage(NPC_HARRISON))
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/zulaman.cpp
         {
             if (npc_harrison_jones_zaAI* pHarrisonAI = dynamic_cast<npc_harrison_jones_zaAI*>(pCreature->AI()))
                 pHarrisonAI->SetHoldState(false);

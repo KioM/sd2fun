@@ -25,11 +25,14 @@ EndScriptData */
 #include "zulgurub.h"
 
 instance_zulgurub::instance_zulgurub(Map* pMap) : ScriptedInstance(pMap),
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/instance_zulgurub.cpp
     m_uiLorKhanGUID(0),
     m_uiZathGUID(0),
     m_uiThekalGUID(0),
     m_uiJindoGUID(0),
     m_uiHakkarGUID(0),
+=======
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/instance_zulgurub.cpp
     m_bHasIntroYelled(false),
     m_bHasAltarYelled(false)
 {
@@ -45,6 +48,7 @@ void instance_zulgurub::DoYellAtTriggerIfCan(uint32 uiTriggerId)
 {
     if (uiTriggerId == AREATRIGGER_ENTER && !m_bHasIntroYelled)
     {
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/instance_zulgurub.cpp
         if (Creature* pHakkar = instance->GetCreature(m_uiHakkarGUID))
         {
             DoScriptText(SAY_HAKKAR_PROTECT, pHakkar);
@@ -58,6 +62,15 @@ void instance_zulgurub::DoYellAtTriggerIfCan(uint32 uiTriggerId)
             DoScriptText(SAY_MINION_DESTROY, pHakkar);
             m_bHasAltarYelled = true;
         }
+=======
+        DoOrSimulateScriptTextForThisInstance(SAY_HAKKAR_PROTECT, NPC_HAKKAR);
+        m_bHasIntroYelled = true;
+    }
+    else if (uiTriggerId == AREATRIGGER_ALTAR && !m_bHasAltarYelled)
+    {
+        DoOrSimulateScriptTextForThisInstance(SAY_MINION_DESTROY, NPC_HAKKAR);
+        m_bHasAltarYelled = true;
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/instance_zulgurub.cpp
     }
 }
 
@@ -66,6 +79,7 @@ void instance_zulgurub::OnCreatureCreate(Creature* pCreature)
     switch(pCreature->GetEntry())
     {
         case NPC_LORKHAN:
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/instance_zulgurub.cpp
             m_uiLorKhanGUID = pCreature->GetGUID();
             break;
         case NPC_ZATH:
@@ -79,6 +93,13 @@ void instance_zulgurub::OnCreatureCreate(Creature* pCreature)
             break;
         case NPC_HAKKAR:
             m_uiHakkarGUID = pCreature->GetGUID();
+=======
+        case NPC_ZATH:
+        case NPC_THEKAL:
+        case NPC_JINDO:
+        case NPC_HAKKAR:
+            m_mNpcEntryGuidStore[pCreature->GetEntry()] = pCreature->GetObjectGuid();
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/instance_zulgurub.cpp
             break;
     }
 }
@@ -122,7 +143,11 @@ void instance_zulgurub::SetData(uint32 uiType, uint32 uiData)
 // Each time High Priest dies lower Hakkar's HP
 void instance_zulgurub::DoLowerHakkarHitPoints()
 {
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/instance_zulgurub.cpp
     if (Creature* pHakkar = instance->GetCreature(m_uiHakkarGUID))
+=======
+    if (Creature* pHakkar = GetSingleCreatureFromStorage(NPC_HAKKAR))
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/instance_zulgurub.cpp
     {
         if (pHakkar->isAlive() && pHakkar->GetMaxHealth() > HP_LOSS_PER_PRIEST)
         {
@@ -163,6 +188,7 @@ uint32 instance_zulgurub::GetData(uint32 uiType)
     return 0;
 }
 
+<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/instance_zulgurub.cpp
 uint64 instance_zulgurub::GetData64(uint32 uiData)
 {
     switch(uiData)
@@ -177,6 +203,8 @@ uint64 instance_zulgurub::GetData64(uint32 uiData)
     }
 }
 
+=======
+>>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/instance_zulgurub.cpp
 InstanceData* GetInstanceData_instance_zulgurub(Map* pMap)
 {
     return new instance_zulgurub(pMap);
