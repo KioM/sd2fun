@@ -128,10 +128,6 @@ struct MANGOS_DLL_DECL boss_malacrassAI : public ScriptedAI
     boss_malacrassAI(Creature* pCreature) : ScriptedAI(pCreature)
     {
         m_pInstance = (ScriptedInstance*)pCreature->GetInstanceData();
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
-        memset(&m_auiAddGUIDs, 0, sizeof(m_auiAddGUIDs));
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
         m_lAddsEntryList.clear();
         Reset();
     }
@@ -139,11 +135,7 @@ struct MANGOS_DLL_DECL boss_malacrassAI : public ScriptedAI
     ScriptedInstance* m_pInstance;
 
     std::list<uint32> m_lAddsEntryList;
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
-    uint64 m_auiAddGUIDs[MAX_ACTIVE_ADDS];
-=======
     ObjectGuid m_aAddGuid[MAX_ACTIVE_ADDS];
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
 
     void Reset()
     {
@@ -162,11 +154,7 @@ struct MANGOS_DLL_DECL boss_malacrassAI : public ScriptedAI
 
         for(uint8 i = 0; i < MAX_ACTIVE_ADDS; ++i)
         {
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
-            if (Creature* pAdd = m_creature->GetMap()->GetCreature(m_auiAddGUIDs[i]))
-=======
             if (Creature* pAdd = m_creature->GetMap()->GetCreature(m_aAddGuid[i]))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
                 pAdd->AI()->EnterEvadeMode();
         }
     }
@@ -190,11 +178,7 @@ struct MANGOS_DLL_DECL boss_malacrassAI : public ScriptedAI
             for(std::list<uint32>::iterator itr = m_lAddsEntryList.begin(); itr != m_lAddsEntryList.end(); ++itr)
             {
                 if (Creature* pAdd = m_creature->SummonCreature((*itr), m_afAddPosX[j], ADD_POS_Y, ADD_POS_Z, ADD_ORIENT, TEMPSUMMON_CORPSE_DESPAWN, 0))
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
-                    m_auiAddGUIDs[j] = pAdd->GetGUID();
-=======
                     m_aAddGuid[j] = pAdd->GetObjectGuid();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
 
                 ++j;
             }
@@ -203,21 +187,13 @@ struct MANGOS_DLL_DECL boss_malacrassAI : public ScriptedAI
         {
             for(std::list<uint32>::iterator itr = m_lAddsEntryList.begin(); itr != m_lAddsEntryList.end(); ++itr)
             {
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
-                Creature* pAdd = m_creature->GetMap()->GetCreature(m_auiAddGUIDs[j]);
-=======
                 Creature* pAdd = m_creature->GetMap()->GetCreature(m_aAddGuid[j]);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
 
                 //object already removed, not exist
                 if (!pAdd)
                 {
                     if (pAdd = m_creature->SummonCreature((*itr), m_afAddPosX[j], ADD_POS_Y, ADD_POS_Z, ADD_ORIENT, TEMPSUMMON_CORPSE_DESPAWN, 0))
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
-                        m_auiAddGUIDs[j] = pAdd->GetGUID();
-=======
                         m_aAddGuid[j] = pAdd->GetObjectGuid();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
                 }
                 ++j;
             }
@@ -239,11 +215,7 @@ struct MANGOS_DLL_DECL boss_malacrassAI : public ScriptedAI
     {
         for(uint8 i = 0; i < MAX_ACTIVE_ADDS; ++i)
         {
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
-            if (Creature* pAdd = m_creature->GetMap()->GetCreature(m_auiAddGUIDs[i]))
-=======
             if (Creature* pAdd = m_creature->GetMap()->GetCreature(m_aAddGuid[i]))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
             {
                 if (!pAdd->getVictim())
                     pAdd->AI()->AttackStart(pWho);
@@ -274,24 +246,16 @@ struct MANGOS_DLL_DECL boss_malacrassAI : public ScriptedAI
     {
         for(uint8 i = 0; i < MAX_ACTIVE_ADDS; ++i)
         {
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
-            if (Creature* pAdd = m_creature->GetMap()->GetCreature(m_auiAddGUIDs[i]))
-=======
             if (Creature* pAdd = m_creature->GetMap()->GetCreature(m_aAddGuid[i]))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
             {
                 pAdd->AI()->EnterEvadeMode();
                 pAdd->SetDeathState(JUST_DIED);
             }
         }
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
-        memset(&m_auiAddGUIDs, 0, sizeof(m_auiAddGUIDs));
-=======
         for (uint8 i = 0; i < MAX_ACTIVE_ADDS; ++i)
             m_aAddGuid[i].Clear();
 
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
         m_lAddsEntryList.clear();
     }
 
@@ -336,11 +300,7 @@ struct MANGOS_DLL_DECL boss_malacrass_addAI : public ScriptedAI
         if (!m_pInstance)
             return;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
-        if (Creature* pMalacrass = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_MALACRASS)))
-=======
         if (Creature* pMalacrass = m_pInstance->GetSingleCreatureFromStorage(NPC_MALACRASS))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
             pMalacrass->AI()->KilledUnit(pVictim);
     }
 
@@ -349,11 +309,7 @@ struct MANGOS_DLL_DECL boss_malacrass_addAI : public ScriptedAI
         if (!m_pInstance)
             return;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
-        if (Creature* pMalacrass = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_MALACRASS)))
-=======
         if (Creature* pMalacrass = m_pInstance->GetSingleCreatureFromStorage(NPC_MALACRASS))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_malacrass.cpp
         {
             switch(urand(0, 2))
             {

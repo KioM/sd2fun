@@ -126,11 +126,7 @@ struct MANGOS_DLL_DECL boss_kalecgosAI : public ScriptedAI
         if (m_pInstance)
         {
             // Reset Sathrovarr too
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
-            if (Creature* pSath = m_pInstance->instance->GetCreature(m_pInstance->GetData64(NPC_SATHROVARR)))
-=======
             if (Creature* pSath = m_pInstance->GetSingleCreatureFromStorage(NPC_SATHROVARR))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
             {
                 if (pSath->isAlive() && pSath->getVictim())
                     pSath->AI()->EnterEvadeMode();
@@ -213,11 +209,7 @@ struct MANGOS_DLL_DECL boss_kalecgosAI : public ScriptedAI
         if (!m_pInstance)
             return;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
-        if (Creature* pSathrovarr = m_pInstance->instance->GetCreature(m_pInstance->GetData64(NPC_SATHROVARR)))
-=======
         if (Creature* pSathrovarr = m_pInstance->GetSingleCreatureFromStorage(NPC_SATHROVARR))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
         {
             if (pSathrovarr->isAlive())
             {
@@ -226,11 +218,7 @@ struct MANGOS_DLL_DECL boss_kalecgosAI : public ScriptedAI
             }
         }
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
-        if (Creature* pKalec = m_pInstance->instance->GetCreature(m_pInstance->GetData64(NPC_KALECGOS_HUMAN)))
-=======
         if (Creature* pKalec = m_pInstance->GetSingleCreatureFromStorage(NPC_KALECGOS_HUMAN))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
         {
             pKalec->DeleteThreatList();
             pKalec->SetVisibility(VISIBILITY_OFF);
@@ -264,11 +252,7 @@ struct MANGOS_DLL_DECL boss_kalecgosAI : public ScriptedAI
 
         if (!m_bEnraged && m_creature->GetHealthPercent() < 10.0f)
         {
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
-            if (Creature* pSathrovarr = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_SATHROVARR)))
-=======
             if (Creature* pSathrovarr = m_pInstance->GetSingleCreatureFromStorage(NPC_SATHROVARR))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
             {
                 if (pSathrovarr->isAlive())
                     pSathrovarr->CastSpell(pSathrovarr, SPELL_CRAZED_RAGE, true);
@@ -394,11 +378,7 @@ struct MANGOS_DLL_DECL boss_sathrovarrAI : public ScriptedAI
         if (!m_pInstance)
             return;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
-        if (Creature* pKalec = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_KALECGOS_HUMAN)))
-=======
         if (Creature* pKalec = m_pInstance->GetSingleCreatureFromStorage(NPC_KALECGOS_HUMAN))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
         {
             m_creature->AddThreat(pKalec, 10000000.0f);
             pKalec->AddThreat(m_creature, 10000000.0f);
@@ -420,11 +400,7 @@ struct MANGOS_DLL_DECL boss_sathrovarrAI : public ScriptedAI
 
             m_pInstance->SetData(DATA_SET_SPECTRAL_CHECK, 5000);
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
-            if (Creature* pKalecgos = m_pInstance->instance->GetCreature(m_pInstance->GetData64(NPC_KALECGOS_DRAGON)))
-=======
             if (Creature* pKalecgos = m_pInstance->GetSingleCreatureFromStorage(NPC_KALECGOS_DRAGON))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
             {
                 if (boss_kalecgosAI* pKalecgosAI = dynamic_cast<boss_kalecgosAI*>(pKalecgos->AI()))
                 {
@@ -447,11 +423,7 @@ struct MANGOS_DLL_DECL boss_sathrovarrAI : public ScriptedAI
 
         if (!m_bEnraged && m_creature->GetHealthPercent() < 10.0f)
         {
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
-            if (Creature* pKalecgos = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(NPC_KALECGOS_DRAGON)))
-=======
             if (Creature* pKalecgos = m_pInstance->GetSingleCreatureFromStorage(NPC_KALECGOS_DRAGON))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/boss_kalecgos.cpp
             {
                 if (pKalecgos->isAlive())
                     pKalecgos->CastSpell(pKalecgos, SPELL_CRAZED_RAGE, true);

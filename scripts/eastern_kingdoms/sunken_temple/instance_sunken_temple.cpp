@@ -25,18 +25,7 @@ EndScriptData */
 #include "sunken_temple.h"
 
 instance_sunken_temple::instance_sunken_temple(Map* pMap) : ScriptedInstance(pMap),
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-    m_uiAtalarionGUID(0),
-    m_uiJammalanGUID(0),
-    m_uiJammalanBarrierGUID(0),
-    m_uiIdolOfHakkarGUID(0),
     m_uiStatueCounter(0),
-    m_uiShadeGUID(0),
-    m_uiAvatarDoor1GUID(0),
-    m_uiAvatarDoor2GUID(0),
-=======
-    m_uiStatueCounter(0),
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
     m_uiAvatarSummonTimer(0),
     m_uiSupressorTimer(0),
     m_uiFlameCounter(0),
@@ -57,27 +46,6 @@ void instance_sunken_temple::OnObjectCreate(GameObject* pGo)
     switch(pGo->GetEntry())
     {
         case GO_JAMMALAN_BARRIER:
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-            m_uiJammalanBarrierGUID = pGo->GetGUID();
-            if (m_auiEncounter[1] == DONE)
-                DoUseDoorOrButton(m_uiJammalanBarrierGUID);
-            break;
-        case GO_IDOL_OF_HAKKAR:
-            m_uiIdolOfHakkarGUID = pGo->GetGUID();
-            break;
-        case GO_ATALAI_LIGHT_BIG:
-            m_luiBigLightGUIDs.push_back(pGo->GetGUID());
-            break;
-        case GO_HAKKAR_DOOR_1:
-            m_uiAvatarDoor1GUID = pGo->GetGUID();
-            break;
-        case GO_HAKKAR_DOOR_2:
-            m_uiAvatarDoor2GUID = pGo->GetGUID();
-            break;
-        case GO_EVIL_CIRCLE:
-            m_vuiCircleGUIDs.push_back(pGo->GetGUID());
-            break;
-=======
             if (m_auiEncounter[1] == DONE)
                 pGo->SetGoState(GO_STATE_ACTIVE);
             break;
@@ -92,23 +60,17 @@ void instance_sunken_temple::OnObjectCreate(GameObject* pGo)
         case GO_EVIL_CIRCLE:
             m_vuiCircleGUIDs.push_back(pGo->GetGUID());
             return;
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
         case GO_ETERNAL_FLAME_1:
         case GO_ETERNAL_FLAME_2:
         case GO_ETERNAL_FLAME_3:
         case GO_ETERNAL_FLAME_4:
             m_luiFlameGUIDs.push_back(pGo->GetGUID());
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-            break;
-    }
-=======
             return;
 
         default:
             return;
     }
     m_mGoEntryGuidStore[pGo->GetEntry()] = pGo->GetObjectGuid();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
 }
 
 void instance_sunken_temple::OnCreatureCreate(Creature* pCreature)
@@ -124,15 +86,8 @@ void instance_sunken_temple::OnCreatureCreate(Creature* pCreature)
             ++m_uiProtectorsRemaining;
             break;
         case NPC_JAMMALAN:
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-            m_uiJammalanGUID = pCreature->GetGUID();
-            break;
-        case NPC_ATALARION:
-            m_uiAtalarionGUID = pCreature->GetGUID();
-=======
         case NPC_ATALARION:
             m_mNpcEntryGuidStore[pCreature->GetEntry()] = pCreature->GetObjectGuid();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
             break;
     }
 }
@@ -159,13 +114,9 @@ void instance_sunken_temple::OnCreatureDeath(Creature* pCreature)
         case NPC_JAMMALAN:          SetData(TYPE_JAMMALAN, DONE);  break;
         case NPC_AVATAR_OF_HAKKAR:  SetData(TYPE_AVATAR, DONE);    break;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-        case NPC_SUPPRESSOR: m_bCanSummonBloodkeeper = true; break;
-=======
         case NPC_SUPPRESSOR:
             m_bCanSummonBloodkeeper = true;
             break;
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
 
         // Jammalain mini-bosses
         case NPC_ZOLO:
@@ -195,16 +146,9 @@ void instance_sunken_temple::SetData(uint32 uiType, uint32 uiData)
                 if (!m_uiProtectorsRemaining)
                 {
                     m_auiEncounter[1] = uiData;
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-                    DoUseDoorOrButton(m_uiJammalanBarrierGUID);
-                    // Intro yell
-                    if (Creature* pJammalan = instance->GetCreature(m_uiJammalanGUID))
-                        DoScriptText(SAY_JAMMALAN_INTRO, pJammalan);
-=======
                     DoUseDoorOrButton(GO_JAMMALAN_BARRIER);
                     // Intro yell
                     DoOrSimulateScriptTextForThisInstance(SAY_JAMMALAN_INTRO, NPC_JAMMALAN);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
                 }
             }
             break;
@@ -219,11 +163,7 @@ void instance_sunken_temple::SetData(uint32 uiType, uint32 uiData)
             {
                 ++m_uiFlameCounter;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-                Creature* pShade = instance->GetCreature(m_uiShadeGUID);
-=======
                 Creature* pShade = GetSingleCreatureFromStorage(NPC_SHADE_OF_HAKKAR);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
                 if (!pShade)
                     return;
 
@@ -271,11 +211,7 @@ void instance_sunken_temple::SetData(uint32 uiType, uint32 uiData)
 
                 if (Creature* pShade = pPlayer->SummonCreature(NPC_SHADE_OF_HAKKAR, aSunkenTempleLocation[1].m_fX, aSunkenTempleLocation[1].m_fY, aSunkenTempleLocation[1].m_fZ, aSunkenTempleLocation[1].m_fO, TEMPSUMMON_MANUAL_DESPAWN, 0))
                 {
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-                    m_uiShadeGUID = pShade->GetGUID();
-=======
                     m_mNpcEntryGuidStore[NPC_SHADE_OF_HAKKAR] = pShade->GetObjectGuid();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
                     pShade->SetRespawnDelay(DAY);
                 }
 
@@ -289,11 +225,7 @@ void instance_sunken_temple::SetData(uint32 uiType, uint32 uiData)
                 // The trash mobs stay in place, they are not despawned; the avatar is not sure if it's despawned or not but most likely he'll stay in place
 
                 // Despawn the shade and the avatar if needed -- TODO, avatar really?
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-                if (Creature* pShade = instance->GetCreature(m_uiShadeGUID))
-=======
                 if (Creature* pShade = GetSingleCreatureFromStorage(NPC_SHADE_OF_HAKKAR))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
                     pShade->ForcedDespawn();
 
                 // Reset flames
@@ -301,13 +233,8 @@ void instance_sunken_temple::SetData(uint32 uiType, uint32 uiData)
             }
 
             // Use combat doors
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-            DoUseDoorOrButton(m_uiAvatarDoor1GUID);
-            DoUseDoorOrButton(m_uiAvatarDoor2GUID);
-=======
             DoUseDoorOrButton(GO_HAKKAR_DOOR_1);
             DoUseDoorOrButton(GO_HAKKAR_DOOR_2);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
 
             m_auiEncounter[4] = uiData;
 
@@ -333,11 +260,7 @@ void instance_sunken_temple::SetData(uint32 uiType, uint32 uiData)
 void instance_sunken_temple::DoSpawnAtalarionIfCan()
 {
     // Return if already summoned
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-    if (m_uiAtalarionGUID)
-=======
     if (GetSingleCreatureFromStorage(NPC_ATALARION))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
         return;
 
     Player* pPlayer = GetPlayerInMap();
@@ -347,11 +270,7 @@ void instance_sunken_temple::DoSpawnAtalarionIfCan()
     pPlayer->SummonCreature(NPC_ATALARION, aSunkenTempleLocation[0].m_fX, aSunkenTempleLocation[0].m_fY, aSunkenTempleLocation[0].m_fZ, aSunkenTempleLocation[0].m_fO, TEMPSUMMON_DEAD_DESPAWN, 0);
 
     // Spawn the idol of Hakkar
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-    DoRespawnGameObject(m_uiIdolOfHakkarGUID, 30 * MINUTE);
-=======
     DoRespawnGameObject(GO_IDOL_OF_HAKKAR, 30 * MINUTE);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
 
     // Spawn the big green lights
     for (GUIDList::const_iterator itr = m_luiBigLightGUIDs.begin(); itr != m_luiBigLightGUIDs.end(); ++itr)
@@ -448,11 +367,7 @@ void instance_sunken_temple::Update(uint32 uiDiff)
     {
         if (m_uiAvatarSummonTimer <= uiDiff)
         {
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-            Creature* pShade = instance->GetCreature(m_uiShadeGUID);
-=======
             Creature* pShade = GetSingleCreatureFromStorage(NPC_SHADE_OF_HAKKAR);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
             if (!pShade)
                 return;
 
@@ -463,11 +378,7 @@ void instance_sunken_temple::Update(uint32 uiDiff)
             if (m_bIsFirstHakkarWave)                       // First wave summoned
             {
                 // Summon at all circles
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-                for (std::vector<uint64>::const_iterator itr = m_vuiCircleGUIDs.begin(); itr != m_vuiCircleGUIDs.end(); ++itr)
-=======
                 for (GUIDVector::const_iterator itr = m_vuiCircleGUIDs.begin(); itr != m_vuiCircleGUIDs.end(); ++itr)
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
                 {
                     if (GameObject* pCircle = instance->GetGameObject(*itr))
                         pShade->SummonCreature(NPC_HAKKARI_MINION, pCircle->GetPositionX(), pCircle->GetPositionY(), pCircle->GetPositionZ(), 0, TEMPSUMMON_DEAD_DESPAWN, 0);
@@ -513,11 +424,7 @@ void instance_sunken_temple::Update(uint32 uiDiff)
     {
         if (m_uiSupressorTimer <= uiDiff)
         {
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
-            Creature* pShade = instance->GetCreature(m_uiShadeGUID);
-=======
             Creature* pShade = GetSingleCreatureFromStorage(NPC_SHADE_OF_HAKKAR);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunken_temple/instance_sunken_temple.cpp
             if (!pShade)
             {
                 // Something went very wrong!

@@ -51,15 +51,9 @@ enum
 
     SPELL_UNLOCK            = 6421,
     SPELL_FIRE              = 6422,
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-};
-
-#define GOSSIP_ITEM_DOOR        "Please unlock the courtyard door."
-=======
 
     GOSSIP_ITEM_DOOR        = -3033000
 };
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
 
 struct MANGOS_DLL_DECL npc_shadowfang_prisonerAI : public npc_escortAI
 {
@@ -126,13 +120,8 @@ struct MANGOS_DLL_DECL npc_shadowfang_prisonerAI : public npc_escortAI
 
     void Reset() {}
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-    //let's prevent Adamant from charging into Ashcrombe's cell
-    //and beating the crap out of him and vice versa XD
-=======
     // Let's prevent Adamant from charging into Ashcrombe's cell
     // And beating the crap out of him and vice versa XD
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
     void AttackStart(Unit* pWho)
     {
         if (pWho)
@@ -155,11 +144,7 @@ bool GossipHello_npc_shadowfang_prisoner(Player* pPlayer, Creature* pCreature)
     ScriptedInstance* pInstance = (ScriptedInstance*)pCreature->GetInstanceData();
 
     if (pInstance && pInstance->GetData(TYPE_FREE_NPC) != DONE && pInstance->GetData(TYPE_RETHILGORE) == DONE)
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-        pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, GOSSIP_ITEM_DOOR, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
-=======
         pPlayer->ADD_GOSSIP_ITEM_ID(GOSSIP_ICON_CHAT, GOSSIP_ITEM_DOOR, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
 
     pPlayer->SEND_GOSSIP_MENU(pPlayer->GetGossipTextId(pCreature), pCreature->GetObjectGuid());
     return true;
@@ -186,20 +171,11 @@ struct Waypoint
     float fX, fY, fZ;
 };
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-//Cordinates for voidwalker spawns
-static const Waypoint VWWaypoints[]=
-{
-    //fX        fY        fZ
-    {-146.06f,  2172.84f, 127.953f},                        //this is the initial location, in the middle of the room
-    {-159.547f, 2178.11f, 128.944f},                        //when they come back up, they hit this point then walk back down
-=======
 // Cordinates for voidwalker spawns
 static const Waypoint VWWaypoints[]=
 {
     {-146.06f,  2172.84f, 127.953f},                        // This is the initial location, in the middle of the room
     {-159.547f, 2178.11f, 128.944f},                        // When they come back up, they hit this point then walk back down
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
     {-171.113f, 2182.69f, 129.255f},
     {-177.613f, 2175.59f, 128.161f},
     {-185.396f, 2178.35f, 126.413f},
@@ -228,39 +204,23 @@ struct MANGOS_DLL_DECL mob_arugal_voidwalkerAI : public ScriptedAI
     {
         m_pInstance = (ScriptedInstance*)pCreature->GetInstanceData();
         m_bIsLeader = false;
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-        m_uiLeaderGUID = 0;
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
         m_uiCurrentPoint = 0;
         m_bReverse = false;
     }
 
     uint32 m_uiResetTimer, m_uiDarkOffering;
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-    uint8 m_uiCurrentPoint, m_uiPosition;                   //0 - leader, 1 - behind-right, 2 - behind, 3 - behind-left
-    uint64 m_uiLeaderGUID;
-=======
     uint8 m_uiCurrentPoint, m_uiPosition;                   // 0 - leader, 1 - behind-right, 2 - behind, 3 - behind-left
     ObjectGuid m_leaderGuid;
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
     ScriptedInstance* m_pInstance;
     bool m_bIsLeader, m_bReverse, m_bWPDone;
 
     void Reset()
     {
         m_creature->AddSplineFlag(SPLINEFLAG_WALKMODE);
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-        m_uiDarkOffering = urand(4400,12500);
-        m_bWPDone = true;
-
-        Creature* pLeader = m_creature->GetMap()->GetCreature(m_uiLeaderGUID);
-=======
         m_uiDarkOffering = urand(4400, 12500);
         m_bWPDone = true;
 
         Creature* pLeader = m_creature->GetMap()->GetCreature(m_leaderGuid);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
         if (pLeader && pLeader->isAlive())
         {
             m_creature->GetMotionMaster()->MoveFollow(pLeader, 1.0f, M_PI/2*m_uiPosition);
@@ -289,11 +249,7 @@ struct MANGOS_DLL_DECL mob_arugal_voidwalkerAI : public ScriptedAI
 
             if (pNewLeader)
             {
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-                m_uiLeaderGUID = pNewLeader->GetGUID();
-=======
                 m_leaderGuid = pNewLeader->GetObjectGuid();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
                 if (pNewLeader == m_creature)
                 {
                     m_bIsLeader = true;
@@ -311,11 +267,6 @@ struct MANGOS_DLL_DECL mob_arugal_voidwalkerAI : public ScriptedAI
         }
     }
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-    //this is the ACID script converted into C++
-    //unfortunately, we can't have both AIs at the same time :(
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
     void UpdateAI(const uint32 uiDiff)
     {
         if (m_bIsLeader && m_bWPDone)
@@ -330,11 +281,7 @@ struct MANGOS_DLL_DECL mob_arugal_voidwalkerAI : public ScriptedAI
 
         if (m_uiDarkOffering < uiDiff)
         {
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-            m_uiDarkOffering = urand(4400,12500);
-=======
             m_uiDarkOffering = urand(4400, 12500);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
 
             if (Unit* pUnit = DoSelectLowestHpFriendly(10.0f, 290))
                 DoCastSpellIfCan(pUnit, SPELL_DARK_OFFERING);
@@ -342,11 +289,7 @@ struct MANGOS_DLL_DECL mob_arugal_voidwalkerAI : public ScriptedAI
         else
             m_uiDarkOffering -= uiDiff;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-        //Check if we have a current target
-=======
         // Check if we have a current target
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
         if (!m_creature->SelectHostileTarget() || !m_creature->getVictim())
             return;
 
@@ -393,16 +336,12 @@ struct MANGOS_DLL_DECL mob_arugal_voidwalkerAI : public ScriptedAI
         if (!uiPosition)
             m_bIsLeader = true;
         else
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-            pLeader ? m_uiLeaderGUID = pLeader->GetGUID() : m_uiLeaderGUID = 0;
-=======
         {
             if (pLeader)
                 m_leaderGuid = pLeader->GetObjectGuid();
             else
                 m_leaderGuid.Clear();
         }
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
 
         Reset();
     }
@@ -469,15 +408,9 @@ enum
 
 enum ArugalPosition
 {
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-    POSITION_SPAWN_LEDGE = 1,
-    POSITION_UPPER_LEDGE,
-    POSITION_STAIRS
-=======
     POSITION_SPAWN_LEDGE = 0,
     POSITION_UPPER_LEDGE = 1,
     POSITION_STAIRS      = 2
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
 };
 
 struct SpawnPoint
@@ -485,30 +418,18 @@ struct SpawnPoint
     float fX, fY, fZ, fO;
 };
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-//Cordinates for voidwalker spawns
-=======
 // Cordinates for voidwalker spawns
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
 static const SpawnPoint VWSpawns[]=
 {
     //fX        fY         fZ        fO
     {-155.352f, 2172.780f, 128.448f, 4.679f},
     {-147.059f, 2163.193f, 128.696f, 0.128f},
     {-148.869f, 2180.859f, 128.448f, 1.814f},
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-    {-140.203f, 2175.263f, 128.448f, 0.373f},
-};
-
-//roughly the height of Fenrus' room,
-//used to tell how he should behave
-=======
     {-140.203f, 2175.263f, 128.448f, 0.373f}
 };
 
 // Roughly the height of Fenrus' room,
 // Used to tell how he should behave
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
 const float HEIGHT_FENRUS_ROOM      = 140.0f;
 
 struct MANGOS_DLL_DECL boss_arugalAI : public ScriptedAI
@@ -580,11 +501,7 @@ struct MANGOS_DLL_DECL boss_arugalAI : public ScriptedAI
                         break;
                     case 3:
                         if (m_pInstance)
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-                            if (GameObject* pLightning = m_creature->GetMap()->GetGameObject(m_pInstance->GetData64(GO_ARUGAL_FOCUS)))
-=======
                             if (GameObject* pLightning = m_pInstance->GetSingleGameObjectFromStorage(GO_ARUGAL_FOCUS))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
                                 pLightning->Use(m_creature);
 
                         m_uiSpeechTimer = 5000;
@@ -594,14 +511,6 @@ struct MANGOS_DLL_DECL boss_arugalAI : public ScriptedAI
                         m_uiSpeechTimer = 500;
                         break;
                     case 5:
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-                        Creature *pVoidwalker, *pLeader;
-                        pVoidwalker = pLeader = NULL;
-
-                        for(uint8 i = 0; i < 4; ++i)
-                        {
-                            pVoidwalker = m_creature->SummonCreature(NPC_VOIDWALKER,VWSpawns[i].fX,
-=======
                     {
                         Creature* pVoidwalker = NULL;
                         Creature* pLeader = NULL;
@@ -609,7 +518,6 @@ struct MANGOS_DLL_DECL boss_arugalAI : public ScriptedAI
                         for (uint8 i = 0; i < 4; ++i)
                         {
                             pVoidwalker = m_creature->SummonCreature(NPC_VOIDWALKER, VWSpawns[i].fX,
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
                                 VWSpawns[i].fY, VWSpawns[i].fZ, VWSpawns[i].fO, TEMPSUMMON_DEAD_DESPAWN, 1);
 
                             if (!pVoidwalker)
@@ -625,10 +533,7 @@ struct MANGOS_DLL_DECL boss_arugalAI : public ScriptedAI
                         }
                         m_uiSpeechStep = 0;
                         return;
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-=======
                     }
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
                     default:
                         m_uiSpeechStep = 0;
                         return;
@@ -641,11 +546,7 @@ struct MANGOS_DLL_DECL boss_arugalAI : public ScriptedAI
             return;
         }
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-        //Check if we have a current target
-=======
         // Check if we have a current target
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
         if (!m_creature->SelectHostileTarget() || !m_creature->getVictim())
             return;
 
@@ -709,17 +610,10 @@ struct MANGOS_DLL_DECL boss_arugalAI : public ScriptedAI
             ArugalPosition posNewPosition;
 
             if (m_posPosition == POSITION_SPAWN_LEDGE)
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-                posNewPosition = (ArugalPosition)urand(2, 3);
-            else
-            {
-                posNewPosition = (ArugalPosition)urand(1, 2);
-=======
                 posNewPosition = (ArugalPosition)urand(1, 2);
             else
             {
                 posNewPosition = (ArugalPosition)urand(0, 1);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
 
                 if (m_posPosition == posNewPosition)
                     posNewPosition = POSITION_STAIRS;
@@ -772,11 +666,7 @@ struct MANGOS_DLL_DECL boss_arugalAI : public ScriptedAI
             ScriptedAI::AttackStart(pWho);
     }
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-    //make the code nice and pleasing to the eye
-=======
     // Make the code nice and pleasing to the eye
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
     inline float GetManaPercent()
     {
         return (((float)m_creature->GetPower(POWER_MANA) / (float)m_creature->GetMaxPower(POWER_MANA)) * 100);
@@ -873,11 +763,7 @@ struct MANGOS_DLL_DECL npc_arugalAI : public ScriptedAI
                     m_uiSpeechTimer = 2000;
                     break;
                 case 3:
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-                    //make him die
-=======
                     // Make him die
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
                     if (Creature* pVincent = GetClosestCreatureWithEntry(m_creature,NPC_VINCENT,20.0f))
                         pVincent->SetStandState(UNIT_STAND_STATE_DEAD);
 
@@ -885,11 +771,7 @@ struct MANGOS_DLL_DECL npc_arugalAI : public ScriptedAI
                     break;
                 case 4:
                     DoScriptText(SAY_INTRO_1, m_creature);
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-                    //m_creature->HandleEmote(EMOTE_ONESHOT_TALK);
-=======
                     // m_creature->HandleEmote(EMOTE_ONESHOT_TALK);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
                     m_uiSpeechTimer = 1750;
                     break;
                 case 5:
@@ -905,11 +787,7 @@ struct MANGOS_DLL_DECL npc_arugalAI : public ScriptedAI
                     m_uiSpeechTimer = 1750;
                     break;
                 case 8:
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-                    //m_creature->HandleEmote(EMOTE_ONESHOT_TALK);
-=======
                     // m_creature->HandleEmote(EMOTE_ONESHOT_TALK);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
                     DoScriptText(SAY_INTRO_3, m_creature);
                     m_uiSpeechTimer = 1750;
                     break;
@@ -1011,13 +889,7 @@ struct MANGOS_DLL_DECL npc_deathstalker_vincentAI : public ScriptedAI
         m_creature->DeleteThreatList();
         m_creature->CombatStop(true);
         m_creature->LoadCreatureAddon();
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-
         m_creature->SetLootRecipient(NULL);
-
-=======
-        m_creature->SetLootRecipient(NULL);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
         Reset();
     }
 };
@@ -1029,36 +901,6 @@ CreatureAI* GetAI_npc_deathstalker_vincent(Creature* pCreature)
 
 void AddSC_shadowfang_keep()
 {
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
-    Script *newscript;
-
-    newscript = new Script;
-    newscript->Name = "npc_shadowfang_prisoner";
-    newscript->pGossipHello =  &GossipHello_npc_shadowfang_prisoner;
-    newscript->pGossipSelect = &GossipSelect_npc_shadowfang_prisoner;
-    newscript->GetAI = &GetAI_npc_shadowfang_prisoner;
-    newscript->RegisterSelf();
-
-    newscript = new Script;
-    newscript->Name = "mob_arugal_voidwalker";
-    newscript->GetAI = &GetAI_mob_arugal_voidwalker;
-    newscript->RegisterSelf();
-
-    newscript = new Script;
-    newscript->Name = "npc_arugal";
-    newscript->GetAI = &GetAI_npc_arugal;
-    newscript->RegisterSelf();
-
-    newscript = new Script;
-    newscript->Name = "boss_arugal";
-    newscript->GetAI = &GetAI_boss_arugal;
-    newscript->RegisterSelf();
-
-    newscript = new Script;
-    newscript->Name = "npc_deathstalker_vincent";
-    newscript->GetAI = &GetAI_npc_deathstalker_vincent;
-    newscript->RegisterSelf();
-=======
     Script *pNewScript;
 
     pNewScript = new Script;
@@ -1087,5 +929,4 @@ void AddSC_shadowfang_keep()
     pNewScript->Name = "npc_deathstalker_vincent";
     pNewScript->GetAI = &GetAI_npc_deathstalker_vincent;
     pNewScript->RegisterSelf();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.cpp
 }

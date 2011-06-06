@@ -32,8 +32,6 @@ enum
     GO_ARUGAL_FOCUS         = 18973,                        //this generates the lightning visual in the Fenrus event
 };
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.h
-=======
 class MANGOS_DLL_DECL instance_shadowfang_keep : public ScriptedInstance
 {
     public:
@@ -56,5 +54,4 @@ class MANGOS_DLL_DECL instance_shadowfang_keep : public ScriptedInstance
         std::string m_strInstData;
 };
 
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/shadowfang_keep/shadowfang_keep.h
 #endif

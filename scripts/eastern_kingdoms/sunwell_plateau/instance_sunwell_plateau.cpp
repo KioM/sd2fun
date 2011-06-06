@@ -34,34 +34,6 @@ EndScriptData */
 */
 
 instance_sunwell_plateau::instance_sunwell_plateau(Map* pMap) : ScriptedInstance(pMap),
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-    // Creatures
-    m_uiKalecgos_DragonGUID(0),
-    m_uiKalecgos_HumanGUID(0),
-    m_uiSathrovarrGUID(0),
-    m_uiBrutallusGUID(0),
-    m_uiFelmystGUID(0),
-    m_uiAlythessGUID(0),
-    m_uiSacrolashGUID(0),
-    m_uiMuruGUID(0),
-    m_uiKilJaedenGUID(0),
-    m_uiKilJaedenControllerGUID(0),
-    m_uiAnveenaGUID(0),
-    m_uiKalecgosGUID(0),
-    // GameObjects
-    m_uiForceFieldGUID(0),
-    m_uiBossCollision1GUID(0),
-    m_uiBossCollision2GUID(0),
-    m_uiIceBarrierGUID(0),
-    m_uiDoorFireBarrierGUID(0),
-    m_uiDoorTheFirstGateGUID(0),
-    m_uiDoorTheSecondGateGUID(0),
-    m_uiDoorMuruEnterGateGUID(0),
-    m_uiDoorMuruExitGateGUID(0),
-    m_uiDoorTheThirdGateGUID(0),
-    // Misc
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
     m_uiSpectralRealmTimer(5000)
 {
     Initialize();
@@ -87,20 +59,6 @@ void instance_sunwell_plateau::OnCreatureCreate(Creature* pCreature)
 {
     switch(pCreature->GetEntry())
     {
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-        case NPC_KALECGOS_DRAGON:      m_uiKalecgos_DragonGUID     = pCreature->GetGUID(); break;
-        case NPC_KALECGOS_HUMAN:       m_uiKalecgos_HumanGUID      = pCreature->GetGUID(); break;
-        case NPC_SATHROVARR:           m_uiSathrovarrGUID          = pCreature->GetGUID(); break;
-        case NPC_BRUTALLUS:            m_uiBrutallusGUID           = pCreature->GetGUID(); break;
-        case NPC_FELMYST:              m_uiFelmystGUID             = pCreature->GetGUID(); break;
-        case NPC_ALYTHESS:             m_uiAlythessGUID            = pCreature->GetGUID(); break;
-        case NPC_SACROLASH:            m_uiSacrolashGUID           = pCreature->GetGUID(); break;
-        case NPC_MURU:                 m_uiMuruGUID                = pCreature->GetGUID(); break;
-        case NPC_KILJAEDEN:            m_uiKilJaedenGUID           = pCreature->GetGUID(); break;
-        case NPC_KILJAEDEN_CONTROLLER: m_uiKilJaedenControllerGUID = pCreature->GetGUID(); break;
-        case NPC_ANVEENA:              m_uiAnveenaGUID             = pCreature->GetGUID(); break;
-        case NPC_KALECGOS:             m_uiKalecgosGUID            = pCreature->GetGUID(); break;
-=======
         case NPC_KALECGOS_DRAGON:
         case NPC_KALECGOS_HUMAN:
         case NPC_SATHROVARR:
@@ -108,7 +66,6 @@ void instance_sunwell_plateau::OnCreatureCreate(Creature* pCreature)
         case NPC_SACROLASH:
             m_mNpcEntryGuidStore[pCreature->GetEntry()] = pCreature->GetObjectGuid();
             break;
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
     }
 }
 
@@ -117,67 +74,29 @@ void instance_sunwell_plateau::OnObjectCreate(GameObject* pGo)
     switch(pGo->GetEntry())
     {
         case GO_FORCEFIELD:
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-            m_uiForceFieldGUID = pGo->GetGUID();
-            break;
-        case GO_BOSS_COLLISION_1:
-            m_uiBossCollision1GUID = pGo->GetGUID();
-            break;
-        case GO_BOSS_COLLISION_2:
-            m_uiBossCollision2GUID = pGo->GetGUID();
-            break;
-        case GO_ICE_BARRIER:
-            m_uiIceBarrierGUID = pGo->GetGUID();
-            break;
-        case GO_FIRE_BARRIER:
-            m_uiDoorFireBarrierGUID = pGo->GetGUID();
-=======
         case GO_BOSS_COLLISION_1:
         case GO_BOSS_COLLISION_2:
         case GO_ICE_BARRIER:
             break;
         case GO_FIRE_BARRIER:
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
             if (m_auiEncounter[TYPE_KALECGOS] == DONE && m_auiEncounter[TYPE_BRUTALLUS] == DONE && m_auiEncounter[TYPE_FELMYST] == DONE)
                 pGo->SetGoState(GO_STATE_ACTIVE);
             break;
         case GO_FIRST_GATE:
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-            m_uiDoorTheFirstGateGUID = pGo->GetGUID();
             break;
         case GO_SECOND_GATE:
-            m_uiDoorTheSecondGateGUID = pGo->GetGUID();
-=======
-            break;
-        case GO_SECOND_GATE:
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
             if (m_auiEncounter[TYPE_EREDAR_TWINS] == DONE)
                 pGo->SetGoState(GO_STATE_ACTIVE);
             break;
         case GO_MURU_ENTER_GATE:
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-            m_uiDoorMuruEnterGateGUID = pGo->GetGUID();
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
             if (m_auiEncounter[TYPE_EREDAR_TWINS] == DONE)
                 pGo->SetGoState(GO_STATE_ACTIVE);
             break;
         case GO_MURU_EXIT_GATE:
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-            m_uiDoorMuruExitGateGUID = pGo->GetGUID();
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
             if (m_auiEncounter[TYPE_MURU] == DONE)
                 pGo->SetGoState(GO_STATE_ACTIVE);
             break;
         case GO_THIRD_GATE:
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-            m_uiDoorTheThirdGateGUID = pGo->GetGUID();
-            if (m_auiEncounter[TYPE_MURU] == DONE)
-                pGo->SetGoState(GO_STATE_ACTIVE);
-            break;
-    }
-=======
             if (m_auiEncounter[TYPE_MURU] == DONE)
                 pGo->SetGoState(GO_STATE_ACTIVE);
             break;
@@ -186,7 +105,6 @@ void instance_sunwell_plateau::OnObjectCreate(GameObject* pGo)
             return;
     }
     m_mGoEntryGuidStore[pGo->GetEntry()] = pGo->GetObjectGuid();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
 }
 
 void instance_sunwell_plateau::SetData(uint32 uiType, uint32 uiData)
@@ -196,65 +114,38 @@ void instance_sunwell_plateau::SetData(uint32 uiType, uint32 uiData)
         case TYPE_KALECGOS:
             m_auiEncounter[uiType] = uiData;
             // combat doors
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-            DoUseDoorOrButton(m_uiForceFieldGUID);
-            DoUseDoorOrButton(m_uiBossCollision1GUID);
-            DoUseDoorOrButton(m_uiBossCollision2GUID);
-=======
             DoUseDoorOrButton(GO_FORCEFIELD);
             DoUseDoorOrButton(GO_BOSS_COLLISION_1);
             DoUseDoorOrButton(GO_BOSS_COLLISION_2);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
             if (uiData == IN_PROGRESS)
                 SpectralRealmList.clear();
             break;
         case TYPE_BRUTALLUS:
             m_auiEncounter[uiType] = uiData;
             if (uiData == SPECIAL)
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-                DoUseDoorOrButton(m_uiIceBarrierGUID,MINUTE);
-=======
                 DoUseDoorOrButton(GO_ICE_BARRIER, MINUTE);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
             break;
         case TYPE_FELMYST:
             m_auiEncounter[uiType] = uiData;
             if (uiData == DONE)
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-                DoUseDoorOrButton(m_uiDoorFireBarrierGUID);
-=======
                 DoUseDoorOrButton(GO_FIRE_BARRIER);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
             break;
         case TYPE_EREDAR_TWINS:
             m_auiEncounter[uiType] = uiData;
             if (uiData == DONE)
             {
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-                DoUseDoorOrButton(m_uiDoorTheSecondGateGUID);
-                DoUseDoorOrButton(m_uiDoorMuruEnterGateGUID);
-=======
                 DoUseDoorOrButton(GO_SECOND_GATE);
                 DoUseDoorOrButton(GO_MURU_ENTER_GATE);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
             }
             break;
         case TYPE_MURU:
             m_auiEncounter[uiType] = uiData;
             // combat door
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-            DoUseDoorOrButton(m_uiDoorMuruEnterGateGUID);
-            if (uiData == DONE)
-            {
-                DoUseDoorOrButton(m_uiDoorMuruExitGateGUID);
-                DoUseDoorOrButton(m_uiDoorTheThirdGateGUID);
-=======
             DoUseDoorOrButton(GO_MURU_ENTER_GATE);
             if (uiData == DONE)
             {
                 DoUseDoorOrButton(GO_MURU_EXIT_GATE);
                 DoUseDoorOrButton(GO_THIRD_GATE);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
             }
             break;
         case TYPE_KILJAEDEN:
@@ -273,11 +164,7 @@ void instance_sunwell_plateau::SetData(uint32 uiType, uint32 uiData)
         saveStream << m_auiEncounter[0] << " " << m_auiEncounter[1] << " " << m_auiEncounter[2] << " "
             << m_auiEncounter[3] << " " << m_auiEncounter[4] << " " << m_auiEncounter[5];
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-        strInstData = saveStream.str();
-=======
         m_strInstData = saveStream.str();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
 
         SaveToDB();
         OUT_SAVE_INST_DATA_COMPLETE;
@@ -298,41 +185,12 @@ uint32 instance_sunwell_plateau::GetData(uint32 uiType)
     return 0;
 }
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-uint64 instance_sunwell_plateau::GetData64(uint32 uiType)
-{
-    switch(uiType)
-    {
-        case NPC_KALECGOS_DRAGON:      return m_uiKalecgos_DragonGUID;
-        case NPC_KALECGOS_HUMAN:       return m_uiKalecgos_HumanGUID;
-        case NPC_SATHROVARR:           return m_uiSathrovarrGUID;
-        case NPC_BRUTALLUS:            return m_uiBrutallusGUID;
-        case NPC_FELMYST:              return m_uiFelmystGUID;
-        case NPC_ALYTHESS:             return m_uiAlythessGUID;
-        case NPC_SACROLASH:            return m_uiSacrolashGUID;
-        case NPC_MURU:                 return m_uiMuruGUID;
-        case NPC_KILJAEDEN:            return m_uiKilJaedenGUID;
-        case NPC_KILJAEDEN_CONTROLLER: return m_uiKilJaedenControllerGUID;
-        case NPC_ANVEENA:              return m_uiAnveenaGUID;
-        case NPC_KALECGOS:             return m_uiKalecgosGUID;
-        case GO_FORCEFIELD:            return m_uiForceFieldGUID;
-    }
-
-    return 0;
-}
-
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
 void instance_sunwell_plateau::EjectPlayer(Player* pPlayer)
 {
     debug_log("SD2: Ejecting Player %s from Spectral Realm", pPlayer->GetName());
 
     // Put player back in Kalecgos(Dragon)'s threat list
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-    /*if (Creature* pKalecgos = instance->GetCreature(m_uiKalecgos_DragonGUID))
-=======
     /*if (Creature* pKalecgos = GetSingleCreatureFromStorage(NPC_KALECGOS_DRAGON))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
     {
         if (pKalecgos->isAlive())
         {
@@ -342,11 +200,7 @@ void instance_sunwell_plateau::EjectPlayer(Player* pPlayer)
     }
 
     // Remove player from Sathrovarr's threat list
-<<<<<<< HEAD:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
-    if (Creature* pSath = instance->GetCreature(m_uiSathrovarrGUID))
-=======
     if (Creature* pSath = instance->GetCreature(NPC_SATHROVARR))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/sunwell_plateau/instance_sunwell_plateau.cpp
     {
         if (pSath->isAlive())
         {

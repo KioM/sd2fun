@@ -132,11 +132,7 @@ struct MANGOS_DLL_DECL boss_archaedasAI : public ScriptedAI
                         m_creature->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE);
                         break;
                     case 2:
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/boss_archaedas.cpp
-                        if (Player* pPlayer = m_creature->GetMap()->GetPlayer(m_pInstance->GetData64(DATA_EVENT_STARTER)))
-=======
                         if (Player* pPlayer = m_creature->GetMap()->GetPlayer(m_pInstance->GetGuid(DATA_EVENT_STARTER)))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/boss_archaedas.cpp
                             AttackStart(pPlayer);
                         else
                             EnterEvadeMode();

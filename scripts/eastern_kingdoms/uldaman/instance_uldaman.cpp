@@ -26,13 +26,6 @@ EndScriptData
 #include "uldaman.h"
 
 instance_uldaman::instance_uldaman(Map* pMap) : ScriptedInstance(pMap),
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-    m_uiTempleDoorUpperGUID(0),
-    m_uiTempleDoorLowerGUID(0),
-    m_uiAncientVaultGUID(0),
-    m_uiPlayerGUID(0),
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
     m_uiStoneKeepersFallen(0),
     m_uiKeeperCooldown(5000)
 {
@@ -42,11 +35,6 @@ instance_uldaman::instance_uldaman(Map* pMap) : ScriptedInstance(pMap),
 void instance_uldaman::Initialize()
 {
     memset(&m_auiEncounter, 0, sizeof(m_auiEncounter));
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-    m_lWardens.clear();
-    m_mKeeperMap.clear();
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
 }
 
 void instance_uldaman::OnObjectCreate(GameObject* pGo)
@@ -56,35 +44,19 @@ void instance_uldaman::OnObjectCreate(GameObject* pGo)
         case GO_TEMPLE_DOOR_UPPER:
             if (m_auiEncounter[0] == DONE)
                 pGo->SetGoState(GO_STATE_ACTIVE);
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-            m_uiTempleDoorUpperGUID = pGo->GetGUID();
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
             break;
         case GO_TEMPLE_DOOR_LOWER:
             if (m_auiEncounter[0] == DONE)
                 pGo->SetGoState(GO_STATE_ACTIVE);
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-            m_uiTempleDoorLowerGUID = pGo->GetGUID();
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
             break;
         case GO_ANCIENT_VAULT:
             if (m_auiEncounter[1] == DONE)
                 pGo->SetGoState(GO_STATE_ACTIVE);
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-            m_uiAncientVaultGUID = pGo->GetGUID();
-            break;
-        default:
-            break;
-    }
-=======
             break;
         default:
             return;
     }
     m_mGoEntryGuidStore[pGo->GetEntry()] = pGo->GetObjectGuid();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
 }
 
 void instance_uldaman::OnCreatureCreate(Creature* pCreature)
@@ -100,12 +72,8 @@ void instance_uldaman::OnCreatureCreate(Creature* pCreature)
             pCreature->SetNoCallAssistance(true);           // no assistance
             break;
         case NPC_STONE_KEEPER:
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-            m_mKeeperMap[pCreature->GetGUID()] = pCreature->isAlive();
-=======
             // FIXME - This isAlive check is currently useless
             m_mKeeperMap[pCreature->GetObjectGuid()] = pCreature->isAlive();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
             pCreature->CastSpell(pCreature, SPELL_STONED, true);
             pCreature->SetNoCallAssistance(true);           // no assistance
             break;
@@ -121,13 +89,8 @@ void instance_uldaman::SetData(uint32 uiType, uint32 uiData)
         case TYPE_ALTAR_EVENT:
             if (uiData == DONE)
             {
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-                DoUseDoorOrButton(m_uiTempleDoorUpperGUID);
-                DoUseDoorOrButton(m_uiTempleDoorLowerGUID);
-=======
                 DoUseDoorOrButton(GO_TEMPLE_DOOR_UPPER);
                 DoUseDoorOrButton(GO_TEMPLE_DOOR_LOWER);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
 
                 m_auiEncounter[0] = uiData;
             }
@@ -154,11 +117,7 @@ void instance_uldaman::SetData(uint32 uiType, uint32 uiData)
                     if (pWarden && pWarden->isAlive())
                         pWarden->ForcedDespawn();
                 }
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-                DoUseDoorOrButton(m_uiAncientVaultGUID);
-=======
                 DoUseDoorOrButton(GO_ANCIENT_VAULT);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
             }
             m_auiEncounter[1] = uiData;
             break;
@@ -172,11 +131,7 @@ void instance_uldaman::SetData(uint32 uiType, uint32 uiData)
 
         saveStream << m_auiEncounter[0] << " " << m_auiEncounter[1];
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-        strInstData = saveStream.str();
-=======
         m_strInstData = saveStream.str();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
         SaveToDB();
         OUT_SAVE_INST_DATA_COMPLETE;
     }
@@ -209,11 +164,7 @@ void instance_uldaman::SetData64(uint32 uiData, uint64 uiGuid)
     switch(uiData)
     {
         case DATA_EVENT_STARTER:
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-            m_uiPlayerGUID = uiGuid;
-=======
             m_playerGuid = ObjectGuid(uiGuid);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
         break;
     }
 }
@@ -233,22 +184,14 @@ uint64 instance_uldaman::GetData64(uint32 uiData)
     switch(uiData)
     {
         case DATA_EVENT_STARTER:
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-            return m_uiPlayerGUID;
-=======
             return m_playerGuid.GetRawValue();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
     }
     return 0;
 }
 
 void instance_uldaman::StartEvent(uint32 uiEventId, Player* pPlayer)
 {
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-    m_uiPlayerGUID = pPlayer->GetGUID();
-=======
     m_playerGuid = pPlayer->GetObjectGuid();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
 
     if (uiEventId == EVENT_ID_ALTAR_KEEPER)
     {
@@ -264,11 +207,7 @@ void instance_uldaman::DoResetKeeperEvent()
     m_auiEncounter[0] = NOT_STARTED;
     m_uiStoneKeepersFallen = 0;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-    for (std::map<uint64, bool>::iterator itr = m_mKeeperMap.begin(); itr != m_mKeeperMap.end(); ++itr)
-=======
     for (std::map<ObjectGuid, bool>::iterator itr = m_mKeeperMap.begin(); itr != m_mKeeperMap.end(); ++itr)
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
     {
         if (Creature* pKeeper = instance->GetCreature(itr->first))
         {
@@ -330,11 +269,7 @@ void instance_uldaman::Update(uint32 uiDiff)
 
             if (!m_mKeeperMap.empty())
             {
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-                for(std::map<uint64, bool>::iterator itr = m_mKeeperMap.begin(); itr != m_mKeeperMap.end(); ++itr)
-=======
                 for(std::map<ObjectGuid, bool>::iterator itr = m_mKeeperMap.begin(); itr != m_mKeeperMap.end(); ++itr)
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
                 {
                     // died earlier
                     if (!itr->second)
@@ -344,11 +279,7 @@ void instance_uldaman::Update(uint32 uiDiff)
                     {
                         if (pKeeper->isAlive() && !pKeeper->getVictim())
                         {
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
-                            if (Player* pPlayer = pKeeper->GetMap()->GetPlayer(m_uiPlayerGUID))
-=======
                             if (Player* pPlayer = pKeeper->GetMap()->GetPlayer(m_playerGuid))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/instance_uldaman.cpp
                             {
                                 // we should use group instead, event starter can be dead while group is still fighting
                                 if (pPlayer->isAlive() && !pPlayer->isInCombat())

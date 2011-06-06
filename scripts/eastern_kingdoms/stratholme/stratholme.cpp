@@ -135,29 +135,18 @@ enum
     NPC_FREED_SOUL         = 11136,
 };
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/stratholme/stratholme.cpp
-=======
 // TODO - likely entirely not needed workaround
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/stratholme/stratholme.cpp
 struct MANGOS_DLL_DECL mob_restless_soulAI : public ScriptedAI
 {
     mob_restless_soulAI(Creature* pCreature) : ScriptedAI(pCreature) { Reset(); }
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/stratholme/stratholme.cpp
-    uint64 m_uiTaggerGUID;
-=======
     ObjectGuid m_taggerGuid;
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/stratholme/stratholme.cpp
     uint32 m_uiDieTimer;
     bool m_bIsTagged;
 
     void Reset()
     {
-<<<<<<< HEAD:scripts/eastern_kingdoms/stratholme/stratholme.cpp
-        m_uiTaggerGUID = 0;
-=======
         m_taggerGuid.Clear();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/stratholme/stratholme.cpp
         m_uiDieTimer = 5000;
         m_bIsTagged = false;
     }
@@ -169,11 +158,7 @@ struct MANGOS_DLL_DECL mob_restless_soulAI : public ScriptedAI
             if (!m_bIsTagged && pSpell->Id == SPELL_EGAN_BLASTER && ((Player*)pCaster)->GetQuestStatus(QUEST_RESTLESS_SOUL) == QUEST_STATUS_INCOMPLETE)
             {
                 m_bIsTagged = true;
-<<<<<<< HEAD:scripts/eastern_kingdoms/stratholme/stratholme.cpp
-                m_uiTaggerGUID = pCaster->GetGUID();
-=======
                 m_taggerGuid = pCaster->GetObjectGuid();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/stratholme/stratholme.cpp
             }
         }
     }
@@ -195,11 +180,7 @@ struct MANGOS_DLL_DECL mob_restless_soulAI : public ScriptedAI
         {
             if (m_uiDieTimer < uiDiff)
             {
-<<<<<<< HEAD:scripts/eastern_kingdoms/stratholme/stratholme.cpp
-                if (Player* pPlayer = m_creature->GetMap()->GetPlayer(m_uiTaggerGUID))
-=======
                 if (Player* pPlayer = m_creature->GetMap()->GetPlayer(m_taggerGuid))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/stratholme/stratholme.cpp
                     pPlayer->DealDamage(m_creature, m_creature->GetHealth(), NULL, DIRECT_DAMAGE, SPELL_SCHOOL_MASK_NORMAL, NULL, false);
             }
             else

@@ -76,11 +76,7 @@ struct MANGOS_DLL_DECL boss_arlokkAI : public ScriptedAI
     uint32 m_uiSummon_Timer;
     uint32 m_uiSummonCount;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_arlokk.cpp
-    uint64 m_uiMarkedGUID;
-=======
     ObjectGuid m_markedGuid;
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_arlokk.cpp
 
     bool m_bIsPhaseTwo;
     bool m_bIsVanished;
@@ -100,11 +96,7 @@ struct MANGOS_DLL_DECL boss_arlokkAI : public ScriptedAI
         m_bIsPhaseTwo = false;
         m_bIsVanished = false;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_arlokk.cpp
-        m_uiMarkedGUID = 0;
-=======
         m_markedGuid.Clear();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_arlokk.cpp
 
         m_creature->SetDisplayId(MODEL_ID_NORMAL);
         m_creature->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE);
@@ -137,11 +129,7 @@ struct MANGOS_DLL_DECL boss_arlokkAI : public ScriptedAI
 
     void DoSummonPhanters()
     {
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_arlokk.cpp
-        if (Player* pPlayer = m_creature->GetMap()->GetPlayer(m_uiMarkedGUID))
-=======
         if (Player* pPlayer = m_creature->GetMap()->GetPlayer(m_markedGuid))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_arlokk.cpp
         {
             if (pPlayer->isAlive())
                 DoScriptText(SAY_FEAST_PANTHER, m_creature, pPlayer);
@@ -153,11 +141,7 @@ struct MANGOS_DLL_DECL boss_arlokkAI : public ScriptedAI
 
     void JustSummoned(Creature* pSummoned)
     {
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_arlokk.cpp
-        if (Player* pPlayer = m_creature->GetMap()->GetPlayer(m_uiMarkedGUID))
-=======
         if (Player* pPlayer = m_creature->GetMap()->GetPlayer(m_markedGuid))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_arlokk.cpp
         {
             if (pPlayer->isAlive())
                 pSummoned->AI()->AttackStart(pPlayer);
@@ -188,21 +172,11 @@ struct MANGOS_DLL_DECL boss_arlokkAI : public ScriptedAI
                     if (Player* pMark = pTarget->GetCharmerOrOwnerPlayerOrPlayerItself())
                     {
                         DoCastSpellIfCan(pMark, SPELL_MARK);
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulgurub/boss_arlokk.cpp
-                        m_uiMarkedGUID = pMark->GetGUID();
-                    }
-                    else
-                    {
-                        if (m_uiMarkedGUID)
-                            m_uiMarkedGUID = 0;
-
-=======
                         m_markedGuid = pMark->GetObjectGuid();
                     }
                     else
                     {
                         m_markedGuid.Clear();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulgurub/boss_arlokk.cpp
                         error_log("SD2: boss_arlokk could not accuire a new target to mark.");
                     }
                 }

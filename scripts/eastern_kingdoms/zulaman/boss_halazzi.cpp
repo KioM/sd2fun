@@ -107,11 +107,7 @@ struct MANGOS_DLL_DECL boss_halazziAI : public ScriptedAI
 
         if (m_pInstance)
         {
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_halazzi.cpp
-            if (Creature* pSpiritLynx = m_pInstance->instance->GetCreature(m_pInstance->GetData64(NPC_SPIRIT_LYNX)))
-=======
             if (Creature* pSpiritLynx = m_pInstance->GetSingleCreatureFromStorage(NPC_SPIRIT_LYNX))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_halazzi.cpp
                 pSpiritLynx->ForcedDespawn();
         }
     }
@@ -201,11 +197,7 @@ struct MANGOS_DLL_DECL boss_halazziAI : public ScriptedAI
         }
         else
         {
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_halazzi.cpp
-            Creature* pSpiritLynx = m_pInstance->instance->GetCreature(m_pInstance->GetData64(NPC_SPIRIT_LYNX));
-=======
             Creature* pSpiritLynx = m_pInstance->GetSingleCreatureFromStorage(NPC_SPIRIT_LYNX);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_halazzi.cpp
 
             if (m_creature->GetHealthPercent() < 10.0f ||
                 (pSpiritLynx && pSpiritLynx->GetHealthPercent() < 10.0f))
@@ -357,11 +349,7 @@ struct MANGOS_DLL_DECL boss_spirit_lynxAI : public ScriptedAI
         if (!m_pInstance)
             return;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_halazzi.cpp
-        if (Creature* pHalazzi = m_pInstance->instance->GetCreature(m_pInstance->GetData64(NPC_HALAZZI)))
-=======
         if (Creature* pHalazzi = m_pInstance->GetSingleCreatureFromStorage(NPC_HALAZZI))
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_halazzi.cpp
             pHalazzi->AI()->KilledUnit(pVictim);
     }
 

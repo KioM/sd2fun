@@ -139,11 +139,6 @@ struct MANGOS_DLL_DECL boss_janalaiAI : public ScriptedAI
 {
     boss_janalaiAI(Creature* pCreature) : ScriptedAI(pCreature)
     {
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
-        m_uiHatcher1GUID = 0;
-        m_uiHatcher2GUID = 0;
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
         m_pInstance = (ScriptedInstance*)pCreature->GetInstanceData();
         Reset();
     }
@@ -162,10 +157,6 @@ struct MANGOS_DLL_DECL boss_janalaiAI : public ScriptedAI
 
     uint32 m_uiEnrageTimer;
     uint32 m_uiHatcherTimer;
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
-    uint32 eggs;
-=======
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
     uint32 m_uiWipeTimer;
 
     bool m_bIsBombing;
@@ -174,33 +165,14 @@ struct MANGOS_DLL_DECL boss_janalaiAI : public ScriptedAI
     bool m_bIsEnraged;
     bool m_bCanEnrage;
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
-    uint64 m_uiHatcher1GUID;
-    uint64 m_uiHatcher2GUID;
-=======
     ObjectGuid m_hatcherOneGuid;
     ObjectGuid m_hatcherTwoGuid;
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
 
     void Reset()
     {
         m_lBombsGUIDList.clear();
         m_lEggsRemainingList.clear();
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
-        if (Creature* pHatcher = m_creature->GetMap()->GetCreature(m_uiHatcher1GUID))
-        {
-            pHatcher->AI()->EnterEvadeMode();
-            pHatcher->SetDeathState(JUST_DIED);
-            m_uiHatcher1GUID = 0;
-        }
-
-        if (Creature* pHatcher = m_creature->GetMap()->GetCreature(m_uiHatcher2GUID))
-        {
-            pHatcher->AI()->EnterEvadeMode();
-            pHatcher->SetDeathState(JUST_DIED);
-            m_uiHatcher2GUID = 0;
-=======
         if (Creature* pHatcher = m_creature->GetMap()->GetCreature(m_hatcherOneGuid))
         {
             pHatcher->AI()->EnterEvadeMode();
@@ -213,7 +185,6 @@ struct MANGOS_DLL_DECL boss_janalaiAI : public ScriptedAI
             pHatcher->AI()->EnterEvadeMode();
             pHatcher->SetDeathState(JUST_DIED);
             m_hatcherTwoGuid.Clear();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
         }
 
         m_uiFireBreathTimer = 8000;
@@ -265,17 +236,10 @@ struct MANGOS_DLL_DECL boss_janalaiAI : public ScriptedAI
         switch(pSummoned->GetEntry())
         {
             case NPC_AMANI_HATCHER_1:
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
-                m_uiHatcher1GUID = pSummoned->GetGUID();
-                break;
-            case NPC_AMANI_HATCHER_2:
-                m_uiHatcher2GUID = pSummoned->GetGUID();
-=======
                 m_hatcherOneGuid = pSummoned->GetObjectGuid();
                 break;
             case NPC_AMANI_HATCHER_2:
                 m_hatcherTwoGuid = pSummoned->GetObjectGuid();
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
                 break;
             case NPC_FIRE_BOMB:
                 if (m_bIsBombing)
@@ -553,13 +517,8 @@ struct MANGOS_DLL_DECL boss_janalaiAI : public ScriptedAI
                 {
                     DoScriptText(SAY_SUMMON_HATCHER, m_creature);
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
-                    Creature* pHatcer1 = m_creature->GetMap()->GetCreature(m_uiHatcher1GUID);
-                    Creature* pHatcer2 = m_creature->GetMap()->GetCreature(m_uiHatcher2GUID);
-=======
                     Creature* pHatcer1 = m_creature->GetMap()->GetCreature(m_hatcherOneGuid);
                     Creature* pHatcer2 = m_creature->GetMap()->GetCreature(m_hatcherTwoGuid);
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/zulaman/boss_janalai.cpp
 
                     if (!pHatcer1 || (pHatcer1 && !pHatcer1->isAlive()))
                     {

@@ -57,37 +57,20 @@ class MANGOS_DLL_DECL instance_uldaman : public ScriptedInstance
 
         Creature* GetClosestDwarfNotInCombat(Creature* pSearcher, uint32 uiPhase);
 
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/uldaman.h
-        const char* Save() { return strInstData.c_str(); }
-=======
         const char* Save() { return m_strInstData.c_str(); }
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/uldaman.h
         void Load(const char* chrIn);
 
     protected:
         uint32 m_auiEncounter[MAX_ENCOUNTER];
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/uldaman.h
-        std::string strInstData;
-
-        uint64 m_uiTempleDoorUpperGUID;
-        uint64 m_uiTempleDoorLowerGUID;
-        uint64 m_uiAncientVaultGUID;
-        uint64 m_uiPlayerGUID;
-=======
         std::string m_strInstData;
 
         ObjectGuid m_playerGuid;
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/uldaman.h
 
         uint32 m_uiKeeperCooldown;
         uint32 m_uiStoneKeepersFallen;
 
         GUIDList m_lWardens;
-<<<<<<< HEAD:scripts/eastern_kingdoms/uldaman/uldaman.h
-        std::map<uint64, bool> m_mKeeperMap;
-=======
         std::map<ObjectGuid, bool> m_mKeeperMap;
->>>>>>> 78b7273e1173af43aad40c5cd8c77374fe62a145:scripts/eastern_kingdoms/uldaman/uldaman.h
 };
 
 #endif
