@@ -165,6 +165,10 @@ enum
     ACHIEV_CRIT_UNDYING_MAEX    = 13238,
     ACHIEV_CRIT_UNDYING_LOA     = 13239,
     ACHIEV_CRIT_UNDYING_THAD    = 13240,
+
+    // Timed achievement criterias
+    ACHIEV_START_PATCHWERK_ID   = 10286,
+    ACHIEV_START_MAEXXNA_ID     = 9891,
 };
 
 struct GothTrigger
@@ -195,7 +199,7 @@ class MANGOS_DLL_DECL instance_naxxramas : public ScriptedInstance
         void SetSpecialAchievementCriteria(uint32 uiType, bool bIsMet);
         bool CheckAchievementCriteriaMeet(uint32 uiCriteriaId, Player const* pSource, Unit const* pTarget, uint32 uiMiscValue1 /* = 0*/);
 
-        const char* Save() { return strInstData.c_str(); }
+        const char* Save() { return m_strInstData.c_str(); }
         void Load(const char* chrIn);
 
         // goth
@@ -215,7 +219,7 @@ class MANGOS_DLL_DECL instance_naxxramas : public ScriptedInstance
     protected:
         uint32 m_auiEncounter[MAX_ENCOUNTER];
         bool m_abAchievCriteria[MAX_SPECIAL_ACHIEV_CRITS];
-        std::string strInstData;
+        std::string m_strInstData;
 
         GUIDList m_lThadTeslaCoilList;
 

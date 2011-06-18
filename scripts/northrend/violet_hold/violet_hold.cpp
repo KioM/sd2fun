@@ -264,18 +264,18 @@ struct MANGOS_DLL_DECL npc_teleportation_portalAI : public ScriptedAI
                 break;
             case NPC_AZURE_CAPTAIN:
                 DoScriptText(EMOTE_DRAGONFLIGHT_PORTAL, pSummoned);
-                m_lMobSet.insert(pSummoned->GetGUID());
+                m_lMobSet.insert(pSummoned->GetObjectGuid());
                 break;
             case NPC_AZURE_RAIDER:
             case NPC_AZURE_SORCEROR:
             case NPC_AZURE_STALKER:
-                m_lMobSet.insert(pSummoned->GetGUID());
+                m_lMobSet.insert(pSummoned->GetObjectGuid());
                 return;
             case NPC_AZURE_SABOTEUR:
             {
                 if (!m_pInstance)
                     return;
-                const sBossInformation* pData = m_pInstance->GetBossInformation();
+                const BossInformation* pData = m_pInstance->GetBossInformation();
                 if (pData)
                     pSummoned->GetMotionMaster()->MovePoint(pData->uiWayPointId, pData->fX, pData->fY, pData->fZ);
                 return;
@@ -298,9 +298,9 @@ struct MANGOS_DLL_DECL npc_teleportation_portalAI : public ScriptedAI
             pSummoned->CastSpell(pSummoned, SPELL_SHIELD_DISRUPTION, false);
             if (m_pInstance)
             {
-                if (const sBossInformation* pData = m_pInstance->GetBossInformation())
+                if (const BossInformation* pData = m_pInstance->GetBossInformation())
                 {
-                    if (Creature* pBoss = m_creature->GetMap()->GetCreature(m_pInstance->GetData64(m_pInstance->GetData(pData->uiType) != DONE ? pData->uiEntry : pData->uiGhostEntry)))
+                    if (Creature* pBoss = m_pInstance->GetSingleCreatureFromStorage(m_pInstance->GetData(pData->uiType) != DONE ? pData->uiEntry : pData->uiGhostEntry))
                     {
                         m_pInstance->UpdateCellForBoss(pData->uiEntry);
                         if (pData->iSayEntry)
@@ -327,7 +327,7 @@ struct MANGOS_DLL_DECL npc_teleportation_portalAI : public ScriptedAI
             case NPC_AZURE_SORCEROR:
             case NPC_AZURE_STALKER:
             {
-                m_lMobSet.erase(pSummoned->GetGUID());
+                m_lMobSet.erase(pSummoned->GetObjectGuid());
 
                 if (!m_lMobSet.empty())
                     return;
